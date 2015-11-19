@@ -20,27 +20,21 @@
             redirectTo: '/'
         });
       });
-
-        nameApp.factory('profile' ,function($http){
-          return {
-            list: function(callback) {
-              $http.get('profile.json').success(callback);
-            }
-          };
-        });
-
-        nameApp.controller('NameCtrl',function ($scope, profile){
-          profile.list(function(profile){
-            $scope.profile = profile  ;
-          });
-    });
-    nameApp.controller('NameDetailCtrl', function($scope, $routeParams ,$http) {
-      $http.get('profile.json').success(function(data){
-      $scope.names = data.filter(function(entry){
-            return entry.name === $routeParams.someName;
-        })[0];
+        nameApp.controller('NameCtrl',function ($scope, $http){
+        $http.get('profile.json').success(function(data){
+        $scope.profile = data;
       });
     });
+    nameApp.controller('NameDetailCtrl', function($scope, $routeParams ,$http) {
+      $scope.name = $routeParams.someName;
+
+      $http.get('profile.json').success(function(data){
+        $scope.myname= data.filter(function(entry){
+            return entry.name === $scope.name;
+        })[0];
+        console.log(myname);
+      })
+        });
 
 
     </script>

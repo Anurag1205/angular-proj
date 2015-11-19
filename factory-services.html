@@ -25,22 +25,28 @@
           return {
             list: function(callback) {
               $http.get('profile.json').success(callback);
-            }
-          };
-        });
+            },
+            find: function(name, callback){
+            $http.get('profile.json').success(function(data) {
+              var names = data.filter(function(entry){
+                return entry.name === name;
+              })[0];
+              callback(names);
+            });
+          }
+        };
+      });
 
         nameApp.controller('NameCtrl',function ($scope, profile){
           profile.list(function(profile){
             $scope.profile = profile  ;
           });
     });
-    nameApp.controller('NameDetailCtrl', function($scope, $routeParams ,$http) {
-      $http.get('profile.json').success(function(data){
-      $scope.names = data.filter(function(entry){
-            return entry.name === $routeParams.someName;
-        })[0];
-      });
+    nameApp.controller('NameDetailCtrl', function($scope, $routeParams ,profile) {
+    profile.find($routeParams.someName ,function(names){
+      $scope.names=names;
     });
+  });
 
 
     </script>

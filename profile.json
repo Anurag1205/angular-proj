@@ -1,0 +1,31 @@
+[
+    {
+        "name": "Anurag",
+        "location": "Bangalore"
+    },
+    {
+        "name": "B",
+        "location": "Chennai"
+    },
+    {
+        "name": "C",
+        "location": "Kolkata"
+    },
+    {
+        "name": "D",
+        "location": "delhi"
+    },
+    {
+        "name": "E",
+        "location": "Mumbai"
+    },
+    {
+        "name": "F",
+        "location": "Kochi"
+    },
+    {
+        "name": "G",
+        "location": "Pune"
+    }
+
+]
